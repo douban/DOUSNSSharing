@@ -13,7 +13,7 @@ v2.x 版本目前已有功能：
 |  人人   |    支持    |    不支持      | 支持      |
 
 #### 版本说明
-当前的代码为v2.x版本，如果需要使用v1.x的版本请使用branch_v1或者v1.x的tag
+当前的代码为v2.x版本
 
 #### 开发计划
 
@@ -25,14 +25,14 @@ v2.x 版本目前已有功能：
 
 ###### 第一步 作为submodule，加入项目的git创库中
 
-	$  git submodule add http://code.dapps.douban.com/SocialSharingiOS.git path
-	$  cd path
-	$  git checkout v2.0 # checkout 2.0版本中最新稳定版本的tag
+	$  git submodule add https://github.com/douban/DOUSNSSharing.git ${path}
+	$  cd ${path}
+	$  git checkout ${version}
 	$  git submodule update --init --recursive
   	
 ###### 第二步 加入项目编译依赖和静态链接库
 	* 在Build Phases -> Target Dependencies 中加入target：DOUSNSSharing
-	* 在Build Phases -> Link Binary With Libraries 中加入链接库：libDoubanSNSSharing.a
+	* 在Build Phases -> Link Binary With Libraries 中加入链接库：libDOUSNSSharing.a
 
 ###### 第三步 使用认证的功能
 详细可以查看Demo中的OAuthSampleBaseViewController
@@ -94,6 +94,3 @@ v2.x 版本目前已有功能：
 * 统一了接口，详细见： DOUOAuth2AuthorizationManager.h DOUVenderAPIRequestManager.h
 * 更新了demo
 
-
-  	
-  	
