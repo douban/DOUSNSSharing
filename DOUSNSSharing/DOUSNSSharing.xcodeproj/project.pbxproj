@@ -1,0 +1,750 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		756C961E1820ED1700675C03 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 756C961D1820ED1700675C03 /* Foundation.framework */; };
+		756C962C1820ED1700675C03 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 756C962B1820ED1700675C03 /* XCTest.framework */; };
+		756C962D1820ED1700675C03 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 756C961D1820ED1700675C03 /* Foundation.framework */; };
+		756C962F1820ED1700675C03 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 756C962E1820ED1700675C03 /* UIKit.framework */; };
+		756C96321820ED1700675C03 /* libDOUSNSSharing.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 756C961A1820ED1700675C03 /* libDOUSNSSharing.a */; };
+		756C96381820ED1700675C03 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 756C96361820ED1700675C03 /* InfoPlist.strings */; };
+		756C963A1820ED1700675C03 /* DOUSNSSharingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 756C96391820ED1700675C03 /* DOUSNSSharingTests.m */; };
+		756C96981820ED3E00675C03 /* NSDate+ExpiresIn.m in Sources */ = {isa = PBXBuildFile; fileRef = 756C96461820ED3E00675C03 /* NSDate+ExpiresIn.m */; };
+		756C96991820ED3E00675C03 /* NSDictionary+URL.m in Sources */ = {isa = PBXBuildFile; fileRef = 756C96481820ED3E00675C03 /* NSDictionary+URL.m */; };
+		756C969A1820ED3E00675C03 /* NSError+OAuth2.m in Sources */ = {isa = PBXBuildFile; fileRef = 756C964A1820ED3E00675C03 /* NSError+OAuth2.m */; };
+		756C969B1820ED3E00675C03 /* NSMutableData+String.m in Sources */ = {isa = PBXBuildFile; fileRef = 756C964C1820ED3E00675C03 /* NSMutableData+String.m */; };
+		756C969C1820ED3E00675C03 /* NSMutableDictionary+Copy.m in Sources */ = {isa = PBXBuildFile; fileRef = 756C964E1820ED3E00675C03 /* NSMutableDictionary+Copy.m */; };
+		756C969D1820ED3E00675C03 /* NSString+OAuth2.m in Sources */ = {isa = PBXBuildFile; fileRef = 756C96501820ED3E00675C03 /* NSString+OAuth2.m */; };
+		756C969E1820ED3E00675C03 /* DOUOAuth2AuthorizationService.m in Sources */ = {isa = PBXBuildFile; fileRef = 756C96551820ED3E00675C03 /* DOUOAuth2AuthorizationService.m */; };
+		756C969F1820ED3E00675C03 /* DOUHTTPConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 756C96591820ED3E00675C03 /* DOUHTTPConnection.m */; };
+		756C96A01820ED3E00675C03 /* DOUMultipartFormData.m in Sources */ = {isa = PBXBuildFile; fileRef = 756C965B1820ED3E00675C03 /* DOUMultipartFormData.m */; };
+		756C96A11820ED3E00675C03 /* DOUSharingLibConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 756C965E1820ED3E00675C03 /* DOUSharingLibConstants.m */; };
+		756C96A21820ED3E00675C03 /* DOUVenderOAuth2APIRequestBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 756C96611820ED3E00675C03 /* DOUVenderOAuth2APIRequestBase.m */; };
+		756C96A31820ED3E00675C03 /* DOUVenderOAuth2ImplFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 756C96631820ED3E00675C03 /* DOUVenderOAuth2ImplFactory.m */; };
+		756C96A41820ED3E00675C03 /* DOUAuthorizationRenrenServiceHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 756C96661820ED3E00675C03 /* DOUAuthorizationRenrenServiceHandler.m */; };
+		756C96A51820ED3E00675C03 /* DOURenrenOAuth2APIRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 756C96681820ED3E00675C03 /* DOURenrenOAuth2APIRequest.m */; };
+		756C96A61820ED3E00675C03 /* DOUVenderPost+Renren.m in Sources */ = {isa = PBXBuildFile; fileRef = 756C966B1820ED3E00675C03 /* DOUVenderPost+Renren.m */; };
+		756C96A71820ED3E00675C03 /* DOUVenderUserInfo+Renren.m in Sources */ = {isa = PBXBuildFile; fileRef = 756C966D1820ED3E00675C03 /* DOUVenderUserInfo+Renren.m */; };
+		756C96A81820ED3E00675C03 /* DOUAuthorizationSinaWeiboServiceHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 756C96701820ED3E00675C03 /* DOUAuthorizationSinaWeiboServiceHandler.m */; };
+		756C96A91820ED3E00675C03 /* DOUSinaWeiboOAuth2APIRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 756C96721820ED3E00675C03 /* DOUSinaWeiboOAuth2APIRequest.m */; };
+		756C96AA1820ED3E00675C03 /* DOUVenderPost+SinaWeibo.m in Sources */ = {isa = PBXBuildFile; fileRef = 756C96751820ED3E00675C03 /* DOUVenderPost+SinaWeibo.m */; };
+		756C96AB1820ED3E00675C03 /* DOUVenderUserInfo+SinaWeibo.m in Sources */ = {isa = PBXBuildFile; fileRef = 756C96771820ED3E00675C03 /* DOUVenderUserInfo+SinaWeibo.m */; };
+		756C96AC1820ED3E00675C03 /* DOUAuthorizationTencentWeiboServiceHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 756C967A1820ED3E00675C03 /* DOUAuthorizationTencentWeiboServiceHandler.m */; };
+		756C96AD1820ED3E00675C03 /* DOUTencentWeiboOAuth2APIRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 756C967C1820ED3E00675C03 /* DOUTencentWeiboOAuth2APIRequest.m */; };
+		756C96AE1820ED3E00675C03 /* DOUVenderPost+TencentWeibo.m in Sources */ = {isa = PBXBuildFile; fileRef = 756C967F1820ED3E00675C03 /* DOUVenderPost+TencentWeibo.m */; };
+		756C96AF1820ED3E00675C03 /* DOUVenderUserInfo+TencentWeibo.m in Sources */ = {isa = PBXBuildFile; fileRef = 756C96811820ED3E00675C03 /* DOUVenderUserInfo+TencentWeibo.m */; };
+		756C96B01820ED3E00675C03 /* DOUOAuth2Credential.m in Sources */ = {isa = PBXBuildFile; fileRef = 756C96841820ED3E00675C03 /* DOUOAuth2Credential.m */; };
+		756C96B11820ED3E00675C03 /* DOUSNSAutoCodingObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 756C96861820ED3E00675C03 /* DOUSNSAutoCodingObject.m */; };
+		756C96B21820ED3E00675C03 /* DOUVenderAPIRequestOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 756C96881820ED3E00675C03 /* DOUVenderAPIRequestOptions.m */; };
+		756C96B31820ED3E00675C03 /* DOUVenderAPIResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 756C968A1820ED3E00675C03 /* DOUVenderAPIResponse.m */; };
+		756C96B41820ED3E00675C03 /* DOUVenderPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 756C968C1820ED3E00675C03 /* DOUVenderPost.m */; };
+		756C96B51820ED3E00675C03 /* DOUVenderUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 756C968E1820ED3E00675C03 /* DOUVenderUserInfo.m */; };
+		756C96B61820ED3E00675C03 /* DOUOAuth2AuthorizationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 756C96921820ED3E00675C03 /* DOUOAuth2AuthorizationManager.m */; };
+		756C96B71820ED3E00675C03 /* DOUVenderAPIRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 756C96941820ED3E00675C03 /* DOUVenderAPIRequestManager.m */; };
+		756C96B81820ED3E00675C03 /* DOUSNSSharingUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 756C96971820ED3E00675C03 /* DOUSNSSharingUtil.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		756C96301820ED1700675C03 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 756C96121820ED1700675C03 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 756C96191820ED1700675C03;
+			remoteInfo = DOUSNSSharing;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		756C96181820ED1700675C03 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		756C961A1820ED1700675C03 /* libDOUSNSSharing.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDOUSNSSharing.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		756C961D1820ED1700675C03 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		756C96211820ED1700675C03 /* DOUSNSSharing-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DOUSNSSharing-Prefix.pch"; sourceTree = "<group>"; };
+		756C962A1820ED1700675C03 /* DOUSNSSharingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DOUSNSSharingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		756C962B1820ED1700675C03 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		756C962E1820ED1700675C03 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		756C96351820ED1700675C03 /* DOUSNSSharingTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DOUSNSSharingTests-Info.plist"; sourceTree = "<group>"; };
+		756C96371820ED1700675C03 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		756C96391820ED1700675C03 /* DOUSNSSharingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DOUSNSSharingTests.m; sourceTree = "<group>"; };
+		756C96451820ED3E00675C03 /* NSDate+ExpiresIn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+ExpiresIn.h"; sourceTree = "<group>"; };
+		756C96461820ED3E00675C03 /* NSDate+ExpiresIn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+ExpiresIn.m"; sourceTree = "<group>"; };
+		756C96471820ED3E00675C03 /* NSDictionary+URL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+URL.h"; sourceTree = "<group>"; };
+		756C96481820ED3E00675C03 /* NSDictionary+URL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+URL.m"; sourceTree = "<group>"; };
+		756C96491820ED3E00675C03 /* NSError+OAuth2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+OAuth2.h"; sourceTree = "<group>"; };
+		756C964A1820ED3E00675C03 /* NSError+OAuth2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+OAuth2.m"; sourceTree = "<group>"; };
+		756C964B1820ED3E00675C03 /* NSMutableData+String.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableData+String.h"; sourceTree = "<group>"; };
+		756C964C1820ED3E00675C03 /* NSMutableData+String.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableData+String.m"; sourceTree = "<group>"; };
+		756C964D1820ED3E00675C03 /* NSMutableDictionary+Copy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableDictionary+Copy.h"; sourceTree = "<group>"; };
+		756C964E1820ED3E00675C03 /* NSMutableDictionary+Copy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableDictionary+Copy.m"; sourceTree = "<group>"; };
+		756C964F1820ED3E00675C03 /* NSString+OAuth2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+OAuth2.h"; sourceTree = "<group>"; };
+		756C96501820ED3E00675C03 /* NSString+OAuth2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+OAuth2.m"; sourceTree = "<group>"; };
+		756C96531820ED3E00675C03 /* DOUAuthorizationServiceHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOUAuthorizationServiceHandler.h; sourceTree = "<group>"; };
+		756C96541820ED3E00675C03 /* DOUOAuth2AuthorizationService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOUOAuth2AuthorizationService.h; sourceTree = "<group>"; };
+		756C96551820ED3E00675C03 /* DOUOAuth2AuthorizationService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOUOAuth2AuthorizationService.m; sourceTree = "<group>"; };
+		756C96561820ED3E00675C03 /* DOUVenderOAuth2APIRequestProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOUVenderOAuth2APIRequestProtocol.h; sourceTree = "<group>"; };
+		756C96581820ED3E00675C03 /* DOUHTTPConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOUHTTPConnection.h; sourceTree = "<group>"; };
+		756C96591820ED3E00675C03 /* DOUHTTPConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOUHTTPConnection.m; sourceTree = "<group>"; };
+		756C965A1820ED3E00675C03 /* DOUMultipartFormData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOUMultipartFormData.h; sourceTree = "<group>"; };
+		756C965B1820ED3E00675C03 /* DOUMultipartFormData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOUMultipartFormData.m; sourceTree = "<group>"; };
+		756C965D1820ED3E00675C03 /* DOUSharingLibConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOUSharingLibConstants.h; sourceTree = "<group>"; };
+		756C965E1820ED3E00675C03 /* DOUSharingLibConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOUSharingLibConstants.m; sourceTree = "<group>"; };
+		756C96601820ED3E00675C03 /* DOUVenderOAuth2APIRequestBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOUVenderOAuth2APIRequestBase.h; sourceTree = "<group>"; };
+		756C96611820ED3E00675C03 /* DOUVenderOAuth2APIRequestBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOUVenderOAuth2APIRequestBase.m; sourceTree = "<group>"; };
+		756C96621820ED3E00675C03 /* DOUVenderOAuth2ImplFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOUVenderOAuth2ImplFactory.h; sourceTree = "<group>"; };
+		756C96631820ED3E00675C03 /* DOUVenderOAuth2ImplFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOUVenderOAuth2ImplFactory.m; sourceTree = "<group>"; };
+		756C96651820ED3E00675C03 /* DOUAuthorizationRenrenServiceHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOUAuthorizationRenrenServiceHandler.h; sourceTree = "<group>"; };
+		756C96661820ED3E00675C03 /* DOUAuthorizationRenrenServiceHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOUAuthorizationRenrenServiceHandler.m; sourceTree = "<group>"; };
+		756C96671820ED3E00675C03 /* DOURenrenOAuth2APIRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOURenrenOAuth2APIRequest.h; sourceTree = "<group>"; };
+		756C96681820ED3E00675C03 /* DOURenrenOAuth2APIRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOURenrenOAuth2APIRequest.m; sourceTree = "<group>"; };
+		756C966A1820ED3E00675C03 /* DOUVenderPost+Renren.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DOUVenderPost+Renren.h"; sourceTree = "<group>"; };
+		756C966B1820ED3E00675C03 /* DOUVenderPost+Renren.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DOUVenderPost+Renren.m"; sourceTree = "<group>"; };
+		756C966C1820ED3E00675C03 /* DOUVenderUserInfo+Renren.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DOUVenderUserInfo+Renren.h"; sourceTree = "<group>"; };
+		756C966D1820ED3E00675C03 /* DOUVenderUserInfo+Renren.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DOUVenderUserInfo+Renren.m"; sourceTree = "<group>"; };
+		756C966F1820ED3E00675C03 /* DOUAuthorizationSinaWeiboServiceHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOUAuthorizationSinaWeiboServiceHandler.h; sourceTree = "<group>"; };
+		756C96701820ED3E00675C03 /* DOUAuthorizationSinaWeiboServiceHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOUAuthorizationSinaWeiboServiceHandler.m; sourceTree = "<group>"; };
+		756C96711820ED3E00675C03 /* DOUSinaWeiboOAuth2APIRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOUSinaWeiboOAuth2APIRequest.h; sourceTree = "<group>"; };
+		756C96721820ED3E00675C03 /* DOUSinaWeiboOAuth2APIRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOUSinaWeiboOAuth2APIRequest.m; sourceTree = "<group>"; };
+		756C96741820ED3E00675C03 /* DOUVenderPost+SinaWeibo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DOUVenderPost+SinaWeibo.h"; sourceTree = "<group>"; };
+		756C96751820ED3E00675C03 /* DOUVenderPost+SinaWeibo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DOUVenderPost+SinaWeibo.m"; sourceTree = "<group>"; };
+		756C96761820ED3E00675C03 /* DOUVenderUserInfo+SinaWeibo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DOUVenderUserInfo+SinaWeibo.h"; sourceTree = "<group>"; };
+		756C96771820ED3E00675C03 /* DOUVenderUserInfo+SinaWeibo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DOUVenderUserInfo+SinaWeibo.m"; sourceTree = "<group>"; };
+		756C96791820ED3E00675C03 /* DOUAuthorizationTencentWeiboServiceHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOUAuthorizationTencentWeiboServiceHandler.h; sourceTree = "<group>"; };
+		756C967A1820ED3E00675C03 /* DOUAuthorizationTencentWeiboServiceHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOUAuthorizationTencentWeiboServiceHandler.m; sourceTree = "<group>"; };
+		756C967B1820ED3E00675C03 /* DOUTencentWeiboOAuth2APIRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOUTencentWeiboOAuth2APIRequest.h; sourceTree = "<group>"; };
+		756C967C1820ED3E00675C03 /* DOUTencentWeiboOAuth2APIRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOUTencentWeiboOAuth2APIRequest.m; sourceTree = "<group>"; };
+		756C967E1820ED3E00675C03 /* DOUVenderPost+TencentWeibo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DOUVenderPost+TencentWeibo.h"; sourceTree = "<group>"; };
+		756C967F1820ED3E00675C03 /* DOUVenderPost+TencentWeibo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DOUVenderPost+TencentWeibo.m"; sourceTree = "<group>"; };
+		756C96801820ED3E00675C03 /* DOUVenderUserInfo+TencentWeibo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DOUVenderUserInfo+TencentWeibo.h"; sourceTree = "<group>"; };
+		756C96811820ED3E00675C03 /* DOUVenderUserInfo+TencentWeibo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DOUVenderUserInfo+TencentWeibo.m"; sourceTree = "<group>"; };
+		756C96831820ED3E00675C03 /* DOUOAuth2Credential.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOUOAuth2Credential.h; sourceTree = "<group>"; };
+		756C96841820ED3E00675C03 /* DOUOAuth2Credential.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOUOAuth2Credential.m; sourceTree = "<group>"; };
+		756C96851820ED3E00675C03 /* DOUSNSAutoCodingObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOUSNSAutoCodingObject.h; sourceTree = "<group>"; };
+		756C96861820ED3E00675C03 /* DOUSNSAutoCodingObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOUSNSAutoCodingObject.m; sourceTree = "<group>"; };
+		756C96871820ED3E00675C03 /* DOUVenderAPIRequestOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOUVenderAPIRequestOptions.h; sourceTree = "<group>"; };
+		756C96881820ED3E00675C03 /* DOUVenderAPIRequestOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOUVenderAPIRequestOptions.m; sourceTree = "<group>"; };
+		756C96891820ED3E00675C03 /* DOUVenderAPIResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOUVenderAPIResponse.h; sourceTree = "<group>"; };
+		756C968A1820ED3E00675C03 /* DOUVenderAPIResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOUVenderAPIResponse.m; sourceTree = "<group>"; };
+		756C968B1820ED3E00675C03 /* DOUVenderPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOUVenderPost.h; sourceTree = "<group>"; };
+		756C968C1820ED3E00675C03 /* DOUVenderPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOUVenderPost.m; sourceTree = "<group>"; };
+		756C968D1820ED3E00675C03 /* DOUVenderUserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOUVenderUserInfo.h; sourceTree = "<group>"; };
+		756C968E1820ED3E00675C03 /* DOUVenderUserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOUVenderUserInfo.m; sourceTree = "<group>"; };
+		756C968F1820ED3E00675C03 /* DoubanSNSSharing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoubanSNSSharing.h; sourceTree = "<group>"; };
+		756C96911820ED3E00675C03 /* DOUOAuth2AuthorizationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOUOAuth2AuthorizationManager.h; sourceTree = "<group>"; };
+		756C96921820ED3E00675C03 /* DOUOAuth2AuthorizationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOUOAuth2AuthorizationManager.m; sourceTree = "<group>"; };
+		756C96931820ED3E00675C03 /* DOUVenderAPIRequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOUVenderAPIRequestManager.h; sourceTree = "<group>"; };
+		756C96941820ED3E00675C03 /* DOUVenderAPIRequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOUVenderAPIRequestManager.m; sourceTree = "<group>"; };
+		756C96961820ED3E00675C03 /* DOUSNSSharingUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOUSNSSharingUtil.h; sourceTree = "<group>"; };
+		756C96971820ED3E00675C03 /* DOUSNSSharingUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOUSNSSharingUtil.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		756C96171820ED1700675C03 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				756C961E1820ED1700675C03 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		756C96271820ED1700675C03 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				756C96321820ED1700675C03 /* libDOUSNSSharing.a in Frameworks */,
+				756C962C1820ED1700675C03 /* XCTest.framework in Frameworks */,
+				756C962F1820ED1700675C03 /* UIKit.framework in Frameworks */,
+				756C962D1820ED1700675C03 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		756C96111820ED1700675C03 = {
+			isa = PBXGroup;
+			children = (
+				756C961F1820ED1700675C03 /* DOUSNSSharing */,
+				756C96331820ED1700675C03 /* DOUSNSSharingTests */,
+				756C961C1820ED1700675C03 /* Frameworks */,
+				756C961B1820ED1700675C03 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		756C961B1820ED1700675C03 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				756C961A1820ED1700675C03 /* libDOUSNSSharing.a */,
+				756C962A1820ED1700675C03 /* DOUSNSSharingTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		756C961C1820ED1700675C03 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				756C961D1820ED1700675C03 /* Foundation.framework */,
+				756C962B1820ED1700675C03 /* XCTest.framework */,
+				756C962E1820ED1700675C03 /* UIKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		756C961F1820ED1700675C03 /* DOUSNSSharing */ = {
+			isa = PBXGroup;
+			children = (
+				756C96431820ED3E00675C03 /* Source */,
+				756C96201820ED1700675C03 /* Supporting Files */,
+			);
+			path = DOUSNSSharing;
+			sourceTree = "<group>";
+		};
+		756C96201820ED1700675C03 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				756C96211820ED1700675C03 /* DOUSNSSharing-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		756C96331820ED1700675C03 /* DOUSNSSharingTests */ = {
+			isa = PBXGroup;
+			children = (
+				756C96391820ED1700675C03 /* DOUSNSSharingTests.m */,
+				756C96341820ED1700675C03 /* Supporting Files */,
+			);
+			path = DOUSNSSharingTests;
+			sourceTree = "<group>";
+		};
+		756C96341820ED1700675C03 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				756C96351820ED1700675C03 /* DOUSNSSharingTests-Info.plist */,
+				756C96361820ED1700675C03 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		756C96431820ED3E00675C03 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				756C968F1820ED3E00675C03 /* DoubanSNSSharing.h */,
+				756C96441820ED3E00675C03 /* Additions */,
+				756C96511820ED3E00675C03 /* Core */,
+				756C96901820ED3E00675C03 /* Manager */,
+				756C96951820ED3E00675C03 /* Utils */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		756C96441820ED3E00675C03 /* Additions */ = {
+			isa = PBXGroup;
+			children = (
+				756C96451820ED3E00675C03 /* NSDate+ExpiresIn.h */,
+				756C96461820ED3E00675C03 /* NSDate+ExpiresIn.m */,
+				756C96471820ED3E00675C03 /* NSDictionary+URL.h */,
+				756C96481820ED3E00675C03 /* NSDictionary+URL.m */,
+				756C96491820ED3E00675C03 /* NSError+OAuth2.h */,
+				756C964A1820ED3E00675C03 /* NSError+OAuth2.m */,
+				756C964B1820ED3E00675C03 /* NSMutableData+String.h */,
+				756C964C1820ED3E00675C03 /* NSMutableData+String.m */,
+				756C964D1820ED3E00675C03 /* NSMutableDictionary+Copy.h */,
+				756C964E1820ED3E00675C03 /* NSMutableDictionary+Copy.m */,
+				756C964F1820ED3E00675C03 /* NSString+OAuth2.h */,
+				756C96501820ED3E00675C03 /* NSString+OAuth2.m */,
+			);
+			path = Additions;
+			sourceTree = "<group>";
+		};
+		756C96511820ED3E00675C03 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				756C96521820ED3E00675C03 /* Base */,
+				756C96571820ED3E00675C03 /* Common */,
+				756C965C1820ED3E00675C03 /* Constant */,
+				756C965F1820ED3E00675C03 /* Impl */,
+				756C96821820ED3E00675C03 /* Model */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		756C96521820ED3E00675C03 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				756C96531820ED3E00675C03 /* DOUAuthorizationServiceHandler.h */,
+				756C96541820ED3E00675C03 /* DOUOAuth2AuthorizationService.h */,
+				756C96551820ED3E00675C03 /* DOUOAuth2AuthorizationService.m */,
+				756C96561820ED3E00675C03 /* DOUVenderOAuth2APIRequestProtocol.h */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		756C96571820ED3E00675C03 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				756C96581820ED3E00675C03 /* DOUHTTPConnection.h */,
+				756C96591820ED3E00675C03 /* DOUHTTPConnection.m */,
+				756C965A1820ED3E00675C03 /* DOUMultipartFormData.h */,
+				756C965B1820ED3E00675C03 /* DOUMultipartFormData.m */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		756C965C1820ED3E00675C03 /* Constant */ = {
+			isa = PBXGroup;
+			children = (
+				756C965D1820ED3E00675C03 /* DOUSharingLibConstants.h */,
+				756C965E1820ED3E00675C03 /* DOUSharingLibConstants.m */,
+			);
+			path = Constant;
+			sourceTree = "<group>";
+		};
+		756C965F1820ED3E00675C03 /* Impl */ = {
+			isa = PBXGroup;
+			children = (
+				756C96601820ED3E00675C03 /* DOUVenderOAuth2APIRequestBase.h */,
+				756C96611820ED3E00675C03 /* DOUVenderOAuth2APIRequestBase.m */,
+				756C96621820ED3E00675C03 /* DOUVenderOAuth2ImplFactory.h */,
+				756C96631820ED3E00675C03 /* DOUVenderOAuth2ImplFactory.m */,
+				756C96641820ED3E00675C03 /* Renren */,
+				756C966E1820ED3E00675C03 /* SinaWeibo */,
+				756C96781820ED3E00675C03 /* TencentWeibo */,
+			);
+			path = Impl;
+			sourceTree = "<group>";
+		};
+		756C96641820ED3E00675C03 /* Renren */ = {
+			isa = PBXGroup;
+			children = (
+				756C96651820ED3E00675C03 /* DOUAuthorizationRenrenServiceHandler.h */,
+				756C96661820ED3E00675C03 /* DOUAuthorizationRenrenServiceHandler.m */,
+				756C96671820ED3E00675C03 /* DOURenrenOAuth2APIRequest.h */,
+				756C96681820ED3E00675C03 /* DOURenrenOAuth2APIRequest.m */,
+				756C96691820ED3E00675C03 /* JSON2Object */,
+			);
+			path = Renren;
+			sourceTree = "<group>";
+		};
+		756C96691820ED3E00675C03 /* JSON2Object */ = {
+			isa = PBXGroup;
+			children = (
+				756C966A1820ED3E00675C03 /* DOUVenderPost+Renren.h */,
+				756C966B1820ED3E00675C03 /* DOUVenderPost+Renren.m */,
+				756C966C1820ED3E00675C03 /* DOUVenderUserInfo+Renren.h */,
+				756C966D1820ED3E00675C03 /* DOUVenderUserInfo+Renren.m */,
+			);
+			path = JSON2Object;
+			sourceTree = "<group>";
+		};
+		756C966E1820ED3E00675C03 /* SinaWeibo */ = {
+			isa = PBXGroup;
+			children = (
+				756C966F1820ED3E00675C03 /* DOUAuthorizationSinaWeiboServiceHandler.h */,
+				756C96701820ED3E00675C03 /* DOUAuthorizationSinaWeiboServiceHandler.m */,
+				756C96711820ED3E00675C03 /* DOUSinaWeiboOAuth2APIRequest.h */,
+				756C96721820ED3E00675C03 /* DOUSinaWeiboOAuth2APIRequest.m */,
+				756C96731820ED3E00675C03 /* JSON2Object */,
+			);
+			path = SinaWeibo;
+			sourceTree = "<group>";
+		};
+		756C96731820ED3E00675C03 /* JSON2Object */ = {
+			isa = PBXGroup;
+			children = (
+				756C96741820ED3E00675C03 /* DOUVenderPost+SinaWeibo.h */,
+				756C96751820ED3E00675C03 /* DOUVenderPost+SinaWeibo.m */,
+				756C96761820ED3E00675C03 /* DOUVenderUserInfo+SinaWeibo.h */,
+				756C96771820ED3E00675C03 /* DOUVenderUserInfo+SinaWeibo.m */,
+			);
+			path = JSON2Object;
+			sourceTree = "<group>";
+		};
+		756C96781820ED3E00675C03 /* TencentWeibo */ = {
+			isa = PBXGroup;
+			children = (
+				756C96791820ED3E00675C03 /* DOUAuthorizationTencentWeiboServiceHandler.h */,
+				756C967A1820ED3E00675C03 /* DOUAuthorizationTencentWeiboServiceHandler.m */,
+				756C967B1820ED3E00675C03 /* DOUTencentWeiboOAuth2APIRequest.h */,
+				756C967C1820ED3E00675C03 /* DOUTencentWeiboOAuth2APIRequest.m */,
+				756C967D1820ED3E00675C03 /* JSON2Object */,
+			);
+			path = TencentWeibo;
+			sourceTree = "<group>";
+		};
+		756C967D1820ED3E00675C03 /* JSON2Object */ = {
+			isa = PBXGroup;
+			children = (
+				756C967E1820ED3E00675C03 /* DOUVenderPost+TencentWeibo.h */,
+				756C967F1820ED3E00675C03 /* DOUVenderPost+TencentWeibo.m */,
+				756C96801820ED3E00675C03 /* DOUVenderUserInfo+TencentWeibo.h */,
+				756C96811820ED3E00675C03 /* DOUVenderUserInfo+TencentWeibo.m */,
+			);
+			path = JSON2Object;
+			sourceTree = "<group>";
+		};
+		756C96821820ED3E00675C03 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				756C96831820ED3E00675C03 /* DOUOAuth2Credential.h */,
+				756C96841820ED3E00675C03 /* DOUOAuth2Credential.m */,
+				756C96851820ED3E00675C03 /* DOUSNSAutoCodingObject.h */,
+				756C96861820ED3E00675C03 /* DOUSNSAutoCodingObject.m */,
+				756C96871820ED3E00675C03 /* DOUVenderAPIRequestOptions.h */,
+				756C96881820ED3E00675C03 /* DOUVenderAPIRequestOptions.m */,
+				756C96891820ED3E00675C03 /* DOUVenderAPIResponse.h */,
+				756C968A1820ED3E00675C03 /* DOUVenderAPIResponse.m */,
+				756C968B1820ED3E00675C03 /* DOUVenderPost.h */,
+				756C968C1820ED3E00675C03 /* DOUVenderPost.m */,
+				756C968D1820ED3E00675C03 /* DOUVenderUserInfo.h */,
+				756C968E1820ED3E00675C03 /* DOUVenderUserInfo.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		756C96901820ED3E00675C03 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				756C96911820ED3E00675C03 /* DOUOAuth2AuthorizationManager.h */,
+				756C96921820ED3E00675C03 /* DOUOAuth2AuthorizationManager.m */,
+				756C96931820ED3E00675C03 /* DOUVenderAPIRequestManager.h */,
+				756C96941820ED3E00675C03 /* DOUVenderAPIRequestManager.m */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		756C96951820ED3E00675C03 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				756C96961820ED3E00675C03 /* DOUSNSSharingUtil.h */,
+				756C96971820ED3E00675C03 /* DOUSNSSharingUtil.m */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		756C96191820ED1700675C03 /* DOUSNSSharing */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 756C963D1820ED1700675C03 /* Build configuration list for PBXNativeTarget "DOUSNSSharing" */;
+			buildPhases = (
+				756C96161820ED1700675C03 /* Sources */,
+				756C96171820ED1700675C03 /* Frameworks */,
+				756C96181820ED1700675C03 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DOUSNSSharing;
+			productName = DOUSNSSharing;
+			productReference = 756C961A1820ED1700675C03 /* libDOUSNSSharing.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		756C96291820ED1700675C03 /* DOUSNSSharingTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 756C96401820ED1700675C03 /* Build configuration list for PBXNativeTarget "DOUSNSSharingTests" */;
+			buildPhases = (
+				756C96261820ED1700675C03 /* Sources */,
+				756C96271820ED1700675C03 /* Frameworks */,
+				756C96281820ED1700675C03 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				756C96311820ED1700675C03 /* PBXTargetDependency */,
+			);
+			name = DOUSNSSharingTests;
+			productName = DOUSNSSharingTests;
+			productReference = 756C962A1820ED1700675C03 /* DOUSNSSharingTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		756C96121820ED1700675C03 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = "Douban Inc.";
+			};
+			buildConfigurationList = 756C96151820ED1700675C03 /* Build configuration list for PBXProject "DOUSNSSharing" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 756C96111820ED1700675C03;
+			productRefGroup = 756C961B1820ED1700675C03 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				756C96191820ED1700675C03 /* DOUSNSSharing */,
+				756C96291820ED1700675C03 /* DOUSNSSharingTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		756C96281820ED1700675C03 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				756C96381820ED1700675C03 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		756C96161820ED1700675C03 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				756C96A31820ED3E00675C03 /* DOUVenderOAuth2ImplFactory.m in Sources */,
+				756C96B61820ED3E00675C03 /* DOUOAuth2AuthorizationManager.m in Sources */,
+				756C96A41820ED3E00675C03 /* DOUAuthorizationRenrenServiceHandler.m in Sources */,
+				756C96AF1820ED3E00675C03 /* DOUVenderUserInfo+TencentWeibo.m in Sources */,
+				756C969D1820ED3E00675C03 /* NSString+OAuth2.m in Sources */,
+				756C96B71820ED3E00675C03 /* DOUVenderAPIRequestManager.m in Sources */,
+				756C96A51820ED3E00675C03 /* DOURenrenOAuth2APIRequest.m in Sources */,
+				756C96AC1820ED3E00675C03 /* DOUAuthorizationTencentWeiboServiceHandler.m in Sources */,
+				756C969A1820ED3E00675C03 /* NSError+OAuth2.m in Sources */,
+				756C96B51820ED3E00675C03 /* DOUVenderUserInfo.m in Sources */,
+				756C969F1820ED3E00675C03 /* DOUHTTPConnection.m in Sources */,
+				756C96B31820ED3E00675C03 /* DOUVenderAPIResponse.m in Sources */,
+				756C96AA1820ED3E00675C03 /* DOUVenderPost+SinaWeibo.m in Sources */,
+				756C96B11820ED3E00675C03 /* DOUSNSAutoCodingObject.m in Sources */,
+				756C96AD1820ED3E00675C03 /* DOUTencentWeiboOAuth2APIRequest.m in Sources */,
+				756C96B01820ED3E00675C03 /* DOUOAuth2Credential.m in Sources */,
+				756C96A21820ED3E00675C03 /* DOUVenderOAuth2APIRequestBase.m in Sources */,
+				756C96B41820ED3E00675C03 /* DOUVenderPost.m in Sources */,
+				756C96A91820ED3E00675C03 /* DOUSinaWeiboOAuth2APIRequest.m in Sources */,
+				756C96A81820ED3E00675C03 /* DOUAuthorizationSinaWeiboServiceHandler.m in Sources */,
+				756C96A71820ED3E00675C03 /* DOUVenderUserInfo+Renren.m in Sources */,
+				756C96A11820ED3E00675C03 /* DOUSharingLibConstants.m in Sources */,
+				756C96A61820ED3E00675C03 /* DOUVenderPost+Renren.m in Sources */,
+				756C96981820ED3E00675C03 /* NSDate+ExpiresIn.m in Sources */,
+				756C96A01820ED3E00675C03 /* DOUMultipartFormData.m in Sources */,
+				756C96AB1820ED3E00675C03 /* DOUVenderUserInfo+SinaWeibo.m in Sources */,
+				756C96AE1820ED3E00675C03 /* DOUVenderPost+TencentWeibo.m in Sources */,
+				756C969B1820ED3E00675C03 /* NSMutableData+String.m in Sources */,
+				756C969C1820ED3E00675C03 /* NSMutableDictionary+Copy.m in Sources */,
+				756C96991820ED3E00675C03 /* NSDictionary+URL.m in Sources */,
+				756C96B21820ED3E00675C03 /* DOUVenderAPIRequestOptions.m in Sources */,
+				756C96B81820ED3E00675C03 /* DOUSNSSharingUtil.m in Sources */,
+				756C969E1820ED3E00675C03 /* DOUOAuth2AuthorizationService.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		756C96261820ED1700675C03 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				756C963A1820ED1700675C03 /* DOUSNSSharingTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		756C96311820ED1700675C03 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 756C96191820ED1700675C03 /* DOUSNSSharing */;
+			targetProxy = 756C96301820ED1700675C03 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		756C96361820ED1700675C03 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				756C96371820ED1700675C03 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		756C963B1820ED1700675C03 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		756C963C1820ED1700675C03 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		756C963E1820ED1700675C03 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/DOUSNSSharing.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DOUSNSSharing/DOUSNSSharing-Prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		756C963F1820ED1700675C03 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/DOUSNSSharing.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DOUSNSSharing/DOUSNSSharing-Prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		756C96411820ED1700675C03 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DOUSNSSharing/DOUSNSSharing-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "DOUSNSSharingTests/DOUSNSSharingTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		756C96421820ED1700675C03 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DOUSNSSharing/DOUSNSSharing-Prefix.pch";
+				INFOPLIST_FILE = "DOUSNSSharingTests/DOUSNSSharingTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		756C96151820ED1700675C03 /* Build configuration list for PBXProject "DOUSNSSharing" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				756C963B1820ED1700675C03 /* Debug */,
+				756C963C1820ED1700675C03 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		756C963D1820ED1700675C03 /* Build configuration list for PBXNativeTarget "DOUSNSSharing" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				756C963E1820ED1700675C03 /* Debug */,
+				756C963F1820ED1700675C03 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		756C96401820ED1700675C03 /* Build configuration list for PBXNativeTarget "DOUSNSSharingTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				756C96411820ED1700675C03 /* Debug */,
+				756C96421820ED1700675C03 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 756C96121820ED1700675C03 /* Project object */;
+}
