@@ -47,6 +47,9 @@
 		756C96B61820ED3E00675C03 /* DOUOAuth2AuthorizationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 756C96921820ED3E00675C03 /* DOUOAuth2AuthorizationManager.m */; };
 		756C96B71820ED3E00675C03 /* DOUVenderAPIRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 756C96941820ED3E00675C03 /* DOUVenderAPIRequestManager.m */; };
 		756C96B81820ED3E00675C03 /* DOUSNSSharingUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 756C96971820ED3E00675C03 /* DOUSNSSharingUtil.m */; };
+		E112700318225CA500712709 /* DOUVenderUserInfo+Douban.m in Sources */ = {isa = PBXBuildFile; fileRef = E112700218225CA500712709 /* DOUVenderUserInfo+Douban.m */; };
+		E119E9721823473A006FD647 /* DOUAuthorizationDoubanServiceHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = E119E9711823473A006FD647 /* DOUAuthorizationDoubanServiceHandler.m */; };
+		E119E9751823473A006FD647 /* DOUDoubanOAuth2APIRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = E119E9741823473A006FD647 /* DOUDoubanOAuth2APIRequest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -150,6 +153,12 @@
 		756C96941820ED3E00675C03 /* DOUVenderAPIRequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOUVenderAPIRequestManager.m; sourceTree = "<group>"; };
 		756C96961820ED3E00675C03 /* DOUSNSSharingUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOUSNSSharingUtil.h; sourceTree = "<group>"; };
 		756C96971820ED3E00675C03 /* DOUSNSSharingUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOUSNSSharingUtil.m; sourceTree = "<group>"; };
+		E112700118225CA500712709 /* DOUVenderUserInfo+Douban.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DOUVenderUserInfo+Douban.h"; sourceTree = "<group>"; };
+		E112700218225CA500712709 /* DOUVenderUserInfo+Douban.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DOUVenderUserInfo+Douban.m"; sourceTree = "<group>"; };
+		E119E9701823473A006FD647 /* DOUAuthorizationDoubanServiceHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOUAuthorizationDoubanServiceHandler.h; sourceTree = "<group>"; };
+		E119E9711823473A006FD647 /* DOUAuthorizationDoubanServiceHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOUAuthorizationDoubanServiceHandler.m; sourceTree = "<group>"; };
+		E119E9731823473A006FD647 /* DOUDoubanOAuth2APIRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOUDoubanOAuth2APIRequest.h; sourceTree = "<group>"; };
+		E119E9741823473A006FD647 /* DOUDoubanOAuth2APIRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOUDoubanOAuth2APIRequest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -320,6 +329,7 @@
 				756C96611820ED3E00675C03 /* DOUVenderOAuth2APIRequestBase.m */,
 				756C96621820ED3E00675C03 /* DOUVenderOAuth2ImplFactory.h */,
 				756C96631820ED3E00675C03 /* DOUVenderOAuth2ImplFactory.m */,
+				E119E96F1823473A006FD647 /* Donban */,
 				756C96641820ED3E00675C03 /* Renren */,
 				756C966E1820ED3E00675C03 /* SinaWeibo */,
 				756C96781820ED3E00675C03 /* TencentWeibo */,
@@ -435,6 +445,27 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		E112700018225C7D00712709 /* JSON2Object */ = {
+			isa = PBXGroup;
+			children = (
+				E112700118225CA500712709 /* DOUVenderUserInfo+Douban.h */,
+				E112700218225CA500712709 /* DOUVenderUserInfo+Douban.m */,
+			);
+			path = JSON2Object;
+			sourceTree = "<group>";
+		};
+		E119E96F1823473A006FD647 /* Donban */ = {
+			isa = PBXGroup;
+			children = (
+				E119E9701823473A006FD647 /* DOUAuthorizationDoubanServiceHandler.h */,
+				E119E9711823473A006FD647 /* DOUAuthorizationDoubanServiceHandler.m */,
+				E119E9731823473A006FD647 /* DOUDoubanOAuth2APIRequest.h */,
+				E119E9741823473A006FD647 /* DOUDoubanOAuth2APIRequest.m */,
+				E112700018225C7D00712709 /* JSON2Object */,
+			);
+			path = Donban;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -516,6 +547,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E112700318225CA500712709 /* DOUVenderUserInfo+Douban.m in Sources */,
 				756C96A31820ED3E00675C03 /* DOUVenderOAuth2ImplFactory.m in Sources */,
 				756C96B61820ED3E00675C03 /* DOUOAuth2AuthorizationManager.m in Sources */,
 				756C96A41820ED3E00675C03 /* DOUAuthorizationRenrenServiceHandler.m in Sources */,
@@ -525,6 +557,7 @@
 				756C96A51820ED3E00675C03 /* DOURenrenOAuth2APIRequest.m in Sources */,
 				756C96AC1820ED3E00675C03 /* DOUAuthorizationTencentWeiboServiceHandler.m in Sources */,
 				756C969A1820ED3E00675C03 /* NSError+OAuth2.m in Sources */,
+				E119E9751823473A006FD647 /* DOUDoubanOAuth2APIRequest.m in Sources */,
 				756C96B51820ED3E00675C03 /* DOUVenderUserInfo.m in Sources */,
 				756C969F1820ED3E00675C03 /* DOUHTTPConnection.m in Sources */,
 				756C96B31820ED3E00675C03 /* DOUVenderAPIResponse.m in Sources */,
@@ -548,6 +581,7 @@
 				756C96991820ED3E00675C03 /* NSDictionary+URL.m in Sources */,
 				756C96B21820ED3E00675C03 /* DOUVenderAPIRequestOptions.m in Sources */,
 				756C96B81820ED3E00675C03 /* DOUSNSSharingUtil.m in Sources */,
+				E119E9721823473A006FD647 /* DOUAuthorizationDoubanServiceHandler.m in Sources */,
 				756C969E1820ED3E00675C03 /* DOUOAuth2AuthorizationService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -735,6 +769,7 @@
 				756C963F1820ED1700675C03 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		756C96401820ED1700675C03 /* Build configuration list for PBXNativeTarget "DOUSNSSharingTests" */ = {
 			isa = XCConfigurationList;
@@ -743,6 +778,7 @@
 				756C96421820ED1700675C03 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

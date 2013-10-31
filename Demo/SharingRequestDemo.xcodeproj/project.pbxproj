@@ -26,6 +26,7 @@
 		A78C9CAA1589880900FA7EA3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A78C9CA91589880900FA7EA3 /* main.m */; };
 		A78C9CAE1589880900FA7EA3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A78C9CAD1589880900FA7EA3 /* AppDelegate.m */; };
 		D880D2B616FC068300D61BAC /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D880D2B516FC068300D61BAC /* Default-568h@2x.png */; };
+		E1126FFE1822466600712709 /* DoubanAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1126FFD1822466600712709 /* DoubanAuthViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +88,8 @@
 		A78C9CAD1589880900FA7EA3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		A78C9CC91589880A00FA7EA3 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		D880D2B516FC068300D61BAC /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
+		E1126FFC1822466600712709 /* DoubanAuthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoubanAuthViewController.h; sourceTree = "<group>"; };
+		E1126FFD1822466600712709 /* DoubanAuthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoubanAuthViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +123,8 @@
 			children = (
 				75F27634171AAB59006BF4B3 /* OAuthSampleBaseViewController.h */,
 				75F27635171AAB59006BF4B3 /* OAuthSampleBaseViewController.m */,
+				E1126FFC1822466600712709 /* DoubanAuthViewController.h */,
+				E1126FFD1822466600712709 /* DoubanAuthViewController.m */,
 				75F27628171AAB16006BF4B3 /* SinaweiboAuthViewController.h */,
 				75F27629171AAB16006BF4B3 /* SinaweiboAuthViewController.m */,
 				75F2762B171AAB16006BF4B3 /* TencentAuthViewController.h */,
@@ -307,6 +312,7 @@
 				756C96C81820EF5F00675C03 /* DemoContants.m in Sources */,
 				75F27654171AF201006BF4B3 /* DemoUtil.m in Sources */,
 				75F2D249171BD791002941CB /* TencentAuthViewController.m in Sources */,
+				E1126FFE1822466600712709 /* DoubanAuthViewController.m in Sources */,
 				75F2D24A171BD791002941CB /* RenrenAuthViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
