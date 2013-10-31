@@ -12,17 +12,17 @@
 
 #ifndef __DEMO_CONSTANTS
 
-#define SINA_DOUBANFM_APPKEY @""
-#define SINA_DOUBANFM_SECRET @""
-#define SINA_DOUBANFM_REDIRECT_URI @""
+#define SINA_APPKEY @""
+#define SINA_SECRET @""
+#define SINA_REDIRECT_URI @""
 
 
-#define TENCENT_DOUBANFM_APPKEY       @""
-#define TENCENT_DOUBANFM_SECRET       @""
-#define TENCENT_DOUBANFM_REDIRECT_URI @""
+#define TENCENT_APPKEY       @""
+#define TENCENT_SECRET       @""
+#define TENCENT_REDIRECT_URI @""
 
-#define kAPP_ID       @""
-#define kAPI_Secrect  @""
-#define kCALLBACK_URL @""
+#define RENREN_TEST_APIKEY       @""
+#define RENREN_TEST_SECRECT  @""
+#define RENREN_TEST_CALLBACK_URL @""
 
 #endif /* __DEMO_CONSTANTS */

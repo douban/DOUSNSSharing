@@ -22,17 +22,17 @@
 
 - (NSString *)venderAPIKey
 {
-  return TENCENT_DOUBANFM_APPKEY;
+  return TENCENT_APPKEY;
 }
 
 - (NSString *)venderAPISecrect
 {
-  return TENCENT_DOUBANFM_SECRET;
+  return TENCENT_SECRET;
 }
 
 - (NSString *)oauthRedirectURL
 {
-  return TENCENT_DOUBANFM_REDIRECT_URI;
+  return TENCENT_REDIRECT_URI;
 }
 
 @end

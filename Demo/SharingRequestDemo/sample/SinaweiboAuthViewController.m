@@ -20,17 +20,17 @@
 
 - (NSString *)venderAPIKey
 {
-  return SINA_DOUBANFM_APPKEY;
+  return SINA_APPKEY;
 }
 
 - (NSString *)venderAPISecrect
 {
-  return SINA_DOUBANFM_SECRET;
+  return SINA_SECRET;
 }
 
 - (NSString *)oauthRedirectURL
 {
-  return SINA_DOUBANFM_REDIRECT_URI;
+  return SINA_REDIRECT_URI;
 }
 
 @end

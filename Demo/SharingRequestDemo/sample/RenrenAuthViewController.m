@@ -22,17 +22,17 @@
 
 - (NSString *)venderAPIKey
 {
-  return kAPP_ID;
+  return RENREN_TEST_APIKEY;
 }
 
 - (NSString *)venderAPISecrect
 {
-  return kAPI_Secrect;
+  return RENREN_TEST_SECRECT;
 }
 
 - (NSString *)oauthRedirectURL
 {
-  return kCALLBACK_URL;
+  return RENREN_TEST_CALLBACK_URL;
 }
 
 @end
