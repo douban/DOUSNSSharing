@@ -15,13 +15,6 @@
 
 @implementation DOUOAuth2AuthorizationManager
 
-- (id)initWithClientid:(NSString *)clientid
-                secret:(NSString *)secret
-            venderType:(DOUOAuth2VenderType)type
-{
-  return [self initWithVenderAPIKey:clientid secret:secret venderType:type];
-}
-
 - (id)initWithVenderAPIKey:(NSString *)apiKey
                     secret:(NSString *)secret
                 venderType:(DOUOAuth2VenderType)type
@@ -31,7 +24,7 @@
   
   self = [super init];
   if (self) {
-    DOUOAuth2Credential *credential = [[DOUOAuth2Credential alloc] initWithClientid:apiKey
+    DOUOAuth2Credential *credential = [[DOUOAuth2Credential alloc] initWithAPIKey:apiKey
                                                                              secret:secret
                                                                          venderType:type];
     id serviceHandler = [DOUVenderOAuth2ImplFactory authorizationServiceByVenderCredential:credential];

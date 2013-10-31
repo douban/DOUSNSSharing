@@ -48,7 +48,7 @@
   self.responseType = type;
   NSString *urlString = [self.serviceHandler venderOAuthWebURLBasePath];
   scope = [self.serviceHandler scopeWithdDefault:scope];
-  NSMutableDictionary *params = [self requestParamsForAuthorizationCodeByAddingClientId:self.credential.apiKey
+  NSMutableDictionary *params = [self requestParamsForAuthorizationCodeByAddingAPIKey:self.credential.apiKey
                                                                             redirectURI:self.redirectURLStr
                                                                                   scope:scope
                                                                                   state:nil];
@@ -205,7 +205,7 @@
 
 #pragma mark - util
 
-- (NSMutableDictionary *)requestParamsForAuthorizationCodeByAddingClientId:(NSString *)client_id
+- (NSMutableDictionary *)requestParamsForAuthorizationCodeByAddingAPIKey:(NSString *)client_id
                                                                redirectURI:(NSString *)redirect_uri
                                                                      scope:(NSString *)scope
                                                                      state:(NSString *)state

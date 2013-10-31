@@ -22,7 +22,7 @@
 @property (nonatomic, readonly, copy) NSString * openid;
 @property (nonatomic, readonly, copy) NSString * openkey;
 
-- (id)initWithClientid:(NSString *)clientid secret:(NSString *)secret venderType:(DOUOAuth2VenderType)type;
+- (id)initWithAPIKey:(NSString *)apiKey secret:(NSString *)secret venderType:(DOUOAuth2VenderType)type;
 - (void)setAccessToken:(NSString *)accessToken expiresDate:(NSDate *)expiresDate;
 - (void)setAccessToken:(NSString *)accessToken expiresDate:(NSDate *)expiresDate userid:(NSString *)userid;
 - (void)setAccessToken:(NSString *)accessToken

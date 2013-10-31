@@ -13,11 +13,7 @@ typedef void (^DOUOAuth2AuthorizeDidCancelBlock)(DOUOAuth2Credential *credential
 
 @interface DOUOAuth2AuthorizationManager : NSObject <DOUOAuth2AuthorizationDelegate>
 
-- (id)initWithClientid:(NSString *)clientid
-                secret:(NSString *)secret
-            venderType:(DOUOAuth2VenderType)type NS_DEPRECATED(10_0, 10_5, 2_0, 2_0);
-
-- (id)initWithVenderAPIKey:(NSString *)clientid
+- (id)initWithVenderAPIKey:(NSString *)apiKey
                     secret:(NSString *)secret
                 venderType:(DOUOAuth2VenderType)type;
 

@@ -38,11 +38,11 @@
   return copied;
 }
 
-- (id)initWithClientid:(NSString *)clientid secret:(NSString *)secret venderType:(DOUOAuth2VenderType)type
+- (id)initWithAPIKey:(NSString *)apiKey secret:(NSString *)secret venderType:(DOUOAuth2VenderType)type
 {
   self = [super init];
   if (self) {
-    self.apiKey = clientid;
+    self.apiKey = apiKey;
     self.secret = secret;
     self.venderType = [NSNumber numberWithInteger:type];
   }
