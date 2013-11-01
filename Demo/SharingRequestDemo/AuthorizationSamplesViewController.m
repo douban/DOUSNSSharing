@@ -6,6 +6,7 @@
 //
 
 #import "AuthorizationSamplesViewController.h"
+#import "DoubanAuthViewController.h"
 #import "SinaweiboAuthViewController.h"
 #import "RenrenAuthViewController.h"
 #import "TencentAuthViewController.h"
@@ -13,16 +14,25 @@
 #import "DOUVenderAPIRequestManager.h"
 #import "DemoUtil.h"
 
+typedef enum {
+  kRowTypeDouban = 0,
+  kRowTypeSinaWeibo = 1,
+  kRowTypeRenren = 2,
+  kRowTypeTencentWeibo = 3,
+} RowType;
+
 @interface AuthorizationSamplesViewController ()
 
 @property (nonatomic, strong) NSArray *arr;
 
 @property (nonatomic, strong) NSArray *cellsArr;
 
+@property (nonatomic, strong) UITableViewCell *doubanCell;
 @property (nonatomic, strong) UITableViewCell *sinaWeiboCell;
 @property (nonatomic, strong) UITableViewCell *tencentWeiboCell;
 @property (nonatomic, strong) UITableViewCell *renrenCell;
 
+@property (nonatomic, strong) UISwitch *doubanCellSwitch;
 @property (nonatomic, strong) UISwitch *sinaWeiboCellSwitch;
 @property (nonatomic, strong) UISwitch *tencentWeiboCellSwitch;
 @property (nonatomic, strong) UISwitch *renrenCellSwitch;
@@ -45,6 +55,14 @@
 - (void)viewDidLoad
 {
   [super viewDidLoad];
+  
+  self.doubanCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:nil];
+  self.doubanCell.tag = kDOUOAuth2VenderDouban;
+  self.doubanCellSwitch = [[UISwitch alloc] init];
+  self.doubanCell.accessoryView = self.doubanCellSwitch;
+  [self.doubanCellSwitch addTarget:self
+                               action:@selector(sendMesageEnabled:)
+                     forControlEvents:UIControlEventValueChanged];
   
   self.sinaWeiboCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:nil];
   self.sinaWeiboCell.tag = kDOUOAuth2VenderSinaWeibo;
@@ -70,8 +88,8 @@
                                   action:@selector(sendMesageEnabled:)
                         forControlEvents:UIControlEventValueChanged];
   
-  self.cellsArr = @[self.sinaWeiboCell, self.renrenCell, self.tencentWeiboCell, ];
-  self.arr = [NSArray arrayWithObjects:@"SinaWeibo", @"Renren", @"Tencent", nil];
+  self.cellsArr = @[self.doubanCell, self.sinaWeiboCell, self.renrenCell, self.tencentWeiboCell, ];
+  self.arr = [NSArray arrayWithObjects:@"Douban", @"SinaWeibo", @"Renren", @"Tencent", nil];
   
   for (NSInteger i = 0; i < self.arr.count; ++i) {
     UITableViewCell *cell = [self.cellsArr objectAtIndex:i];
@@ -81,7 +99,14 @@
 
 - (void)sendMesageEnabled:(UISwitch *)sender
 {
-  if (self.sinaWeiboCellSwitch == sender) {
+  if (self.doubanCellSwitch == sender) {
+    DOUOAuth2Credential *credentail = [[AppGlobal sharedInstance] credentialByVenderType:kDOUOAuth2VenderDouban];
+    if (credentail == nil) {
+      sender.on = NO;
+      [self authDouban];
+    }
+  }
+  else if (self.sinaWeiboCellSwitch == sender) {
     DOUOAuth2Credential *credentail = [[AppGlobal sharedInstance] credentialByVenderType:kDOUOAuth2VenderSinaWeibo];
     if (credentail == nil) {
       sender.on = NO;
@@ -106,6 +131,11 @@
 {
   NSMutableArray *enabledArr = [NSMutableArray arrayWithCapacity:4];
   DOUOAuth2Credential *credential = nil;
+  credential = [[AppGlobal sharedInstance] credentialByVenderType:kDOUOAuth2VenderDouban];
+  if (self.doubanCellSwitch.on && credential) {
+    [enabledArr addObject:credential];
+  }
+  
   credential = [[AppGlobal sharedInstance] credentialByVenderType:kDOUOAuth2VenderSinaWeibo];
   if (self.sinaWeiboCellSwitch.on && credential) {
     [enabledArr addObject:credential];
@@ -121,6 +151,19 @@
     [enabledArr addObject:credential];
   }
   return enabledArr;
+}
+
+- (void)authDouban
+{
+  DoubanAuthViewController *vc = [[DoubanAuthViewController alloc] init];
+  [self.navigationController pushViewController:vc animated:YES];
+  [vc setOAuth2DidSucceed:^(DOUOAuth2Credential *credential) {
+    [AppGlobal sharedInstance].douban = credential;
+    [self.tableView reloadData];
+    self.doubanCellSwitch.on = YES;
+  } didFail:^{
+    
+  }];
 }
 
 - (void)authSinaWeibo
@@ -207,11 +250,13 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
   if (indexPath.section == 0) {
-    if (0 == indexPath.row) {
+    if (kRowTypeDouban == indexPath.row) {
+      [self authDouban];
+    } else if (kRowTypeSinaWeibo == indexPath.row) {
       [self authSinaWeibo];
-    } else if (1 == indexPath.row) {
+    } else if (kRowTypeRenren == indexPath.row) {
       [self authRenren];
-    } else if (2 == indexPath.row) {
+    } else if (kRowTypeTencentWeibo == indexPath.row) {
       [self authTencentWeibo];
     }
   } else if (indexPath.section == 1) {

@@ -14,6 +14,9 @@ static AppGlobal *instance = nil;
 - (NSArray *)allCredentials
 {
   NSMutableArray *array = [NSMutableArray arrayWithCapacity:8];
+  if (self.douban) {
+    [array addObject:self.douban];
+  }
   if (self.sinaWeibo) {
     [array addObject:self.sinaWeibo];
   }
@@ -28,7 +31,9 @@ static AppGlobal *instance = nil;
 
 - (DOUOAuth2Credential *)credentialByVenderType:(DOUOAuth2VenderType)venderType
 {
-  if (venderType == kDOUOAuth2VenderSinaWeibo) {
+  if (venderType == kDOUOAuth2VenderDouban) {
+    return self.douban;
+  } else if (venderType == kDOUOAuth2VenderSinaWeibo) {
     return self.sinaWeibo;
   } else if (venderType == kDOUOAuth2VenderRenren) {
     return self.renren;
