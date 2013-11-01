@@ -8,6 +8,7 @@ v2.x 版本目前已有功能：
 
 | Vender  | OAuth2认证 | SSO OAuth2认证 |分享      |
 | --------| --------- | --------------| -------- |
+| 豆瓣 |    支持    |    不支持      | 支持      |
 | 新浪微博 |    支持    |    不支持      | 支持      |
 | 腾讯微博 |    支持    |    不支持      | 支持      |
 |  人人   |    支持    |    不支持      | 支持      |
@@ -70,6 +71,9 @@ v2.x 版本目前已有功能：
 
 
 #### ChangeLog ####
+###### V2.3.3
+* Support Douban
+
 ###### V2.3.2
 * Fix warnings in Xcode 5
 * Update demo : remove api keys
