@@ -13,7 +13,7 @@ static NSString *const kDOUVenderDoubanPostKeyScreenName = @"douban_user_name";
 - (void)setUserInfoFromJSONDicForDouban:(NSDictionary *)jsonDic
 {
   @try {
-    [self checkKeysInDicForRenren:jsonDic];
+    [self checkKeysInDicForDouban:jsonDic];
     id object = [jsonDic objectForKey:kDOUVenderDoubanPostKeyUserID];
     if (IS_INSTANCE_OF(object, NSNumber)) {
       self.userID = [object stringValue];
@@ -31,7 +31,7 @@ static NSString *const kDOUVenderDoubanPostKeyScreenName = @"douban_user_name";
   }
 }
 
-- (void)checkKeysInDicForRenren:(NSDictionary *)jsonDic
+- (void)checkKeysInDicForDouban:(NSDictionary *)jsonDic
 {
   NSAssert(jsonDic != nil, @"jsonDic should not be nil");
   id object = [jsonDic objectForKey:kDOUVenderDoubanPostKeyUserID];
