@@ -191,6 +191,19 @@
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
+  if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+    UIScrollView *scrollView = [webView scrollView];
+    CGSize contentSize = [scrollView contentSize];
+
+    NSAssert([webView superview] != nil, @"webView has no superview");
+    CGSize containerSize = [[webView superview] bounds].size;
+
+    CGFloat offsetX = roundf((contentSize.width - containerSize.width) / 2.0f);
+    if (offsetX > 0.0f) {
+      [scrollView setContentOffset:CGPointMake(offsetX, 0.0f)];
+    }
+  }
+
   [self.loadingActivity stopAnimating];
   [self.loadingActivity removeFromSuperview];
   self.loadingActivity = nil;
