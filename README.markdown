@@ -71,6 +71,9 @@ v2.x 版本目前已有功能：
 
 
 #### ChangeLog ####
+###### 2.3.4
+* Fix for iPad display
+
 ###### V2.3.3
 * Support Douban
 
