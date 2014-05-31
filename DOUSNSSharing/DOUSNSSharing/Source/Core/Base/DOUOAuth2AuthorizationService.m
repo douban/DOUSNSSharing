@@ -56,9 +56,10 @@
     [params setObject:@"mobile" forKey:@"display"];
   }
   urlString = [urlString URLStringByAddingParameters:params];
-  NSURLRequest *request = nil;
+  NSMutableURLRequest *request = nil;
   if (params) {
-    request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlString]];
+    request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlString]];
+    [request setHTTPShouldHandleCookies:NO];
   }
   
   UIWebView *authorizationWebView = [[UIWebView alloc] init];
