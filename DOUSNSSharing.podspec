@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name               = 'DOUSNSSharing'
-  s.version            = '2.3.4'
+  s.version            = '2.3.5'
   s.summary            = 'SNS OAuth 2 Binding and Sharing'
   s.homepage           = 'https://github.com/douban/DOUSNSSharing'
   s.author             = { 'Douban iOS Developers' => 'ios-dev@douban.com' }
