@@ -8,7 +8,7 @@
 #import "DOUVenderUserInfo+Renren.h"
 
 
-static NSString *const kDOUVenderRenrenPostKeyUserID = @"uid";
+static NSString *const kDOUVenderRenrenPostKeyUserID = @"id";
 static NSString *const kDOUVenderRenrenPostKeyScreenName = @"name";
 static NSString *const kDOUVenderRenrenPostKeyName = @"name";
 

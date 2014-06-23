@@ -25,12 +25,12 @@ static NSString *const kDOURenrenOAuth2APIRequestErrorDomain = @"DOURenrenOAuth2
            imageURL:(NSString *)imageURL
        extraOptions:(DOUVenderAPIRequestOptions *)options
 {
-  NSString *urlString = @"https://api.renren.com/restserver.do";
+  NSString *urlString = @"https://api.renren.com/v2/feed/put";
   NSMutableDictionary *parameters = [NSMutableDictionary dictionaryWithCapacity:8];
   [parameters setObject:@"feed.publishFeed" forKey:kDOURenrenAPIMethod];
   [parameters setObject:status forKey:@"message"];
   if (imageURL) {
-    [parameters setObject:imageURL forKey:@"image"];
+    [parameters setObject:imageURL forKey:@"imageUrl"];
   }
   
   if (options.renrenStatusDescription && options.renrenStatusDescription.length > 0) {
@@ -39,18 +39,18 @@ static NSString *const kDOURenrenOAuth2APIRequestErrorDomain = @"DOURenrenOAuth2
     [parameters setObject:status forKey:@"description"];
   }
   if (options.renrenStatusTitle && options.renrenStatusTitle.length > 0) {
-    [parameters setObject:options.renrenStatusTitle forKey:@"name"];
+    [parameters setObject:options.renrenStatusTitle forKey:@"title"];
   } else {
-    [parameters setObject:@"分享" forKey:@"name"];
+    [parameters setObject:@"分享" forKey:@"title"];
   }
   if (options.renrenStatusLinkURL && options.renrenStatusLinkURL.length > 0) {
-    [parameters setObject:options.renrenStatusLinkURL forKey:@"url"];
+    [parameters setObject:options.renrenStatusLinkURL forKey:@"targetUrl"];
   } else {
-    [parameters setObject:@"http://m.douban.com" forKey:@"url"];
+    [parameters setObject:@"http://m.douban.com" forKey:@"targetUrl"];
   }
-  [parameters addEntriesFromDictionary:[self commonRequestParameters]];
   self.requestConnection = [[DOUHTTPConnection alloc] init];
-  NSURLRequest *req = [self.requestConnection requestWithPostMethodForPath:urlString parameters:parameters];
+  NSMutableURLRequest *req = [self.requestConnection requestWithPostMethodForPath:urlString parameters:parameters];
+  [self setOAuthHeaderForRequest:req];
   [self sendHttpRequest:req];
   return YES;
 }
@@ -123,12 +123,10 @@ static NSString *const kDOURenrenOAuth2APIRequestErrorDomain = @"DOURenrenOAuth2
   @try {
     if (self.credential.accessToken) {
       _requestType = kDOUVenderAPIRequestTypeGetUserInfo;
-      NSMutableDictionary *parameters = [NSMutableDictionary dictionaryWithCapacity:8];
-      [parameters setObject:@"users.getInfo" forKey:kDOURenrenAPIMethod];
-      [parameters addEntriesFromDictionary:[self commonRequestParameters]];
-      NSString *urlString = @"https://api.renren.com/restserver.do";
+      NSString *urlString = @"https://api.renren.com/v2/user/get";
       self.requestConnection = [[DOUHTTPConnection alloc] init];
-      NSMutableURLRequest *req = [self.requestConnection requestWithPostMethodForPath:urlString parameters:parameters];
+      NSMutableURLRequest *req = [self.requestConnection requestWithGetMethodForPath:urlString parameters:nil];
+      [self setOAuthHeaderForRequest:req];
       [self sendHttpRequest:req];
       return YES;
     } else {
@@ -165,9 +163,9 @@ static NSString *const kDOURenrenOAuth2APIRequestErrorDomain = @"DOURenrenOAuth2
       }
       case kDOUVenderAPIRequestTypeGetUserInfo: {
         DOUVenderUserInfo *userInfo = [[DOUVenderUserInfo alloc] init];
-        NSArray *users = [DOUSNSSharingUtil objectFromJSONString:responseJSONStr];
-        if (users && [users isKindOfClass:[NSArray class]] && users.count > 0) {
-          [userInfo setUserInfoFromJSONDicForRenren:[users objectAtIndex:0]];
+        NSDictionary *user = [[DOUSNSSharingUtil objectFromJSONString:responseJSONStr] objectForKey:@"response"];
+        if (user && [user isKindOfClass:[NSDictionary class]]) {
+          [userInfo setUserInfoFromJSONDicForRenren:user];
           _responseObject = [[DOUVenderAPIResponse alloc] initWithResponse:responseJSONStr];
           _responseObject.venderUserInfo = userInfo;
         }
@@ -182,11 +180,9 @@ static NSString *const kDOURenrenOAuth2APIRequestErrorDomain = @"DOURenrenOAuth2
 
 #pragma mark - util method
 
-- (NSDictionary *)commonRequestParameters
+- (void)setOAuthHeaderForRequest:(NSMutableURLRequest *)request
 {
-  return @{ @"format": @"json",
-            kOAuthv2AccessToken: self.credential.accessToken,
-            kDOURenrenAPIV: @"1.0" };
+  [request setValue:[@"Bearer " stringByAppendingString:self.credential.accessToken] forHTTPHeaderField:@"Authorization"];
 }
 
 - (BOOL)fillCredentailWithResponseText:(NSString *)responseString
@@ -197,11 +193,10 @@ static NSString *const kDOURenrenOAuth2APIRequestErrorDomain = @"DOURenrenOAuth2
   if (accessToken) {
     NSString *refrehtoken = [dic objectForKey:kOAuthv2RefreshToken];
     NSDate *expiresDate = [NSDate dateFromExpiresin:[dic objectForKey:@"expires_in"]];
-    NSString *name = [dic objectForKey:@"name"];
     [self.credential setAccessToken:accessToken
                         expiresDate:expiresDate
                              userid:nil
-                           userName:name
+                           userName:dic[@"user"][@"name"]
                        refreshToken:refrehtoken];
     return YES;
   } else {
