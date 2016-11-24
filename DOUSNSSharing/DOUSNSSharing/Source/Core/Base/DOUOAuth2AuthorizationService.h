@@ -9,6 +9,7 @@
 #import "DOUAuthorizationServiceHandler.h"
 
 @class DOUOAuth2AuthorizationService;
+@protocol DOUAuthorizationServiceHandler;
 
 typedef enum {
   kDOUOAuthAuthorizationResponseTypeCode,
