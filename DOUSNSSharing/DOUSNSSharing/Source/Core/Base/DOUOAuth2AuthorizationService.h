@@ -6,7 +6,6 @@
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 #import "DOUOAuth2Credential.h"
-#import "DOUAuthorizationServiceHandler.h"
 
 @class DOUOAuth2AuthorizationService;
 @protocol DOUAuthorizationServiceHandler;
