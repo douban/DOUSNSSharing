@@ -4,8 +4,12 @@
 //
 
 #import <UIKit/UIKit.h>
+
 #import "DOUOAuth2AuthorizationService.h"
 #import "NSString+OAuth2.h"
+#import "DOUVenderOAuth2APIRequestProtocol.h"
+#import "DOUAuthorizationServiceHandler.h"
+#import "DOUVenderAPIResponse.h"
 
 @interface DOUOAuth2AuthorizationService ()
 @property (nonatomic, readwrite, copy) DOUOAuth2Credential *credential;

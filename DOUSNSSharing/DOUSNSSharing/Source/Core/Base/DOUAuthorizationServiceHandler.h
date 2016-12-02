@@ -4,7 +4,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "DOUOAuth2AuthorizationService.h"
+
 #import "DOUVenderOAuth2APIRequestBase.h"
 
 typedef enum {
