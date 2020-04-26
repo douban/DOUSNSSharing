@@ -3,12 +3,12 @@
 //  Copyright (c) 2013 Douban Inc. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 #import "DOUOAuth2Credential.h"
 
 @class DOUOAuth2AuthorizationService;
 @protocol DOUAuthorizationServiceHandler;
+@class WKWebView;
 
 typedef enum {
   kDOUOAuthAuthorizationResponseTypeCode,
@@ -28,22 +28,23 @@ typedef enum  {
 
 @protocol DOUOAuth2AuthorizationService <NSObject>
 
-- (UIView *)requestWithRedirectUri:(NSString *)uri
-                         responseType:(DOUOAuthAuthorizationResponseType)type
-                                scope:(NSString *)scope
-                              display:(DOUOAuthAuthorizationDisplayType)display;
-- (UIView *)requestWithRedirectUri:(NSString *)uri
-                                scope:(NSString *)scope;
-
+- (void)requestWithRedirectUri:(NSString *)uri
+                  responseType:(DOUOAuthAuthorizationResponseType)type
+                         scope:(NSString *)scope
+                       display:(DOUOAuthAuthorizationDisplayType)display
+                     inWebView:(WKWebView *)webView;
+- (void)requestWithRedirectUri:(NSString *)uri
+                         scope:(NSString *)scope
+                     inWebView:(WKWebView *)webView;
 - (void)cancelAndClearBlocks;
 
 @end
 
 
-@interface DOUOAuth2AuthorizationService : NSObject <UIWebViewDelegate, DOUOAuth2AuthorizationService>
+@interface DOUOAuth2AuthorizationService : NSObject <DOUOAuth2AuthorizationService>
 
-@property (nonatomic, unsafe_unretained) id<DOUOAuth2AuthorizationDelegate> delegate;
-@property (nonatomic, readonly, copy) DOUOAuth2Credential *credential;
+@property (nonatomic, weak) id<DOUOAuth2AuthorizationDelegate> delegate;
+@property (nonatomic, readonly) DOUOAuth2Credential *credential;
 
 - (id)initWithCredential:(DOUOAuth2Credential *)credential
            venderService:(id<DOUAuthorizationServiceHandler>)serviceHandler;

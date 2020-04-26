@@ -3,26 +3,26 @@
 //  Copyright (c) 2013 Douban Inc. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-
+#import <WebKit/WebKit.h>
 #import "DOUOAuth2AuthorizationService.h"
 #import "NSString+OAuth2.h"
 #import "DOUVenderOAuth2APIRequestProtocol.h"
 #import "DOUAuthorizationServiceHandler.h"
 #import "DOUVenderAPIResponse.h"
 
-@interface DOUOAuth2AuthorizationService ()
-@property (nonatomic, readwrite, copy) DOUOAuth2Credential *credential;
-@property (nonatomic, readwrite, strong) NSString *redirectURLStr;
+@interface DOUOAuth2AuthorizationService () <WKNavigationDelegate, UIScrollViewDelegate>
+@property (nonatomic, copy) DOUOAuth2Credential *credential;
+@property (nonatomic, copy) NSString *redirectURLStr;
 @property (nonatomic, assign) DOUOAuthAuthorizationResponseType responseType;
 @property (nonatomic, strong) id<DOUAuthorizationServiceHandler> serviceHandler;
 @property (nonatomic, strong) id<DOUVenderOAuth2APIRequest> exchangeTokenRequest;
-@property (nonatomic, strong) UIWebView *webView;
+@property (nonatomic, weak) WKWebView *webView;
 @property (nonatomic, strong) UIActivityIndicatorView *loadingActivity;
 
 @end
 
-@implementation DOUOAuth2AuthorizationService {
+@implementation DOUOAuth2AuthorizationService
+{
   NSString *_redirectUri;
   NSURLConnection *_connection;
 }
@@ -43,11 +43,14 @@
   return self;
 }
 
-- (UIView *)requestWithRedirectUri:(NSString *)redirectURL
-                      responseType:(DOUOAuthAuthorizationResponseType)type
-                             scope:(NSString *)scope
-                           display:(DOUOAuthAuthorizationDisplayType)display
+- (void)requestWithRedirectUri:(NSString *)redirectURL
+                  responseType:(DOUOAuthAuthorizationResponseType)type
+                         scope:(NSString *)scope
+                       display:(DOUOAuthAuthorizationDisplayType)display
+                     inWebView:(WKWebView *)webView
 {
+  NSAssert(webView.superview, @"Add webView as subview for loading requests");
+
   self.redirectURLStr = redirectURL;
   self.responseType = type;
   NSString *urlString = [self.serviceHandler venderOAuthWebURLBasePath];
@@ -66,14 +69,7 @@
     [request setHTTPShouldHandleCookies:NO];
   }
   
-  UIWebView *authorizationWebView = [[UIWebView alloc] init];
-  authorizationWebView.delegate = self;
-  [authorizationWebView loadRequest:request];
-  self.webView = authorizationWebView;
-  
-  
-  self.loadingActivity = [[UIActivityIndicatorView alloc]
-                          initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+  self.loadingActivity = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
   self.loadingActivity.hidesWhenStopped = YES;
   [self.webView addSubview:self.loadingActivity];
   [self.loadingActivity startAnimating];
@@ -88,17 +84,21 @@
   | UIViewAutoresizingFlexibleLeftMargin
   | UIViewAutoresizingFlexibleRightMargin
   | UIViewAutoresizingFlexibleTopMargin;
-  
-  return authorizationWebView;
+
+  [webView loadRequest:request];
+
+  self.webView = webView;
 }
 
-- (UIView *)requestWithRedirectUri:(NSString *)uri
-                             scope:(NSString *)scope
+- (void)requestWithRedirectUri:(NSString *)uri
+                         scope:(NSString *)scope
+                     inWebView:(WKWebView *)webView
 {
-  return [self requestWithRedirectUri:uri
-                         responseType:kDOUOAuthAuthorizationResponseTypeCode
-                                scope:scope
-                              display:kDOUOAuthAuthorizationDisplayMobile];
+  [self requestWithRedirectUri:uri
+                  responseType:kDOUOAuthAuthorizationResponseTypeCode
+                         scope:scope
+                       display:kDOUOAuthAuthorizationDisplayMobile
+                     inWebView:webView];
 }
 
 - (void)cancelAndClearBlocks
@@ -106,7 +106,8 @@
   [self.exchangeTokenRequest cancelAndClearBlocks];
   self.exchangeTokenRequest = nil;
   [self.delegate authorizationDidCancel:self];
-  self.webView.delegate = nil;
+  self.webView.navigationDelegate = nil;
+  self.webView.scrollView.delegate = nil;
   [self.webView stopLoading];
   self.webView = nil;
   self.loadingActivity = nil;
@@ -134,67 +135,79 @@
   }];
 }
 
-#pragma mark - UIWebViewDelegate
+#pragma mark - WKNavigationDelegate
 
-- (BOOL)             webView:(UIWebView *)webView
-  shouldStartLoadWithRequest:(NSURLRequest *)request
-              navigationType:(UIWebViewNavigationType)navigationType
+- (void)webView:(WKWebView *)webView
+  decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction
+  decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler
 {
   NSString *authorizedCode = nil;
   NSString *errStr = nil;
-  DOUAuthorizationResult result = [self.serviceHandler resultFromAuthorizationRequest:request
+  DOUAuthorizationResult result = [self.serviceHandler resultFromAuthorizationRequest:navigationAction.request
                                                                           redirectURL:self.redirectURLStr
                                                                     aurhorizationCode:&authorizedCode
                                                                      credentialToFill:self.credential
                                                                              errorStr:&errStr];
-  if (result == kDOUAuthorizationResultNone) {
-    return YES;
-  } else if (result == kDOUAuthorizationResultCancelled) {
-    [self.delegate authorizationDidCancel:self];
-    return NO;
-  } else if (result == kDOUAuthorizationResultDidGetCode) {
-    id<DOUVenderOAuth2APIRequest> req = [self.serviceHandler oauth2APIRequestWithCredential:self.credential];
-    [req getAccessTokenWithCode:authorizedCode redirectUri:self.redirectURLStr];
-    [req setDidSucceedBlock:^(id < DOUVenderOAuth2APIRequest > request) {
-      DOUVenderAPIResponse *resp = [request apiResponse];
-      self.credential = resp.venderOAuth2Credential;
+  switch (result) {
+    case kDOUAuthorizationResultNone: {
+      decisionHandler(WKNavigationActionPolicyCancel);
+      break;
+    }
+
+    case kDOUAuthorizationResultCancelled: {
+      [self.delegate authorizationDidCancel:self];
+      decisionHandler(WKNavigationActionPolicyCancel);
+      break;
+    }
+
+    case kDOUAuthorizationResultDidGetCode: {
+      id<DOUVenderOAuth2APIRequest> req = [self.serviceHandler oauth2APIRequestWithCredential:self.credential];
+      [req getAccessTokenWithCode:authorizedCode redirectUri:self.redirectURLStr];
+      [req setDidSucceedBlock:^(id < DOUVenderOAuth2APIRequest > request) {
+        DOUVenderAPIResponse *resp = [request apiResponse];
+        self.credential = resp.venderOAuth2Credential;
+        if (self.credential.accessToken) {
+          [self getUserInfoAfterAuthorization];
+        } else {
+          NSError *err = [NSError errorWithDomain:@"DOUOAuth2AuthorizationService"
+                                             code:1
+                                         userInfo:@{ @"error": @"access token is nil" }];
+          [self.delegate authorization:self didFailWithError:err];
+        }
+      } didFailBlock:^(id<DOUVenderOAuth2APIRequest> request, NSError *error) {
+        [self.delegate authorization:self didFailWithError:error];
+      } didCancelBlock:^(id<DOUVenderOAuth2APIRequest> request) {
+        [self.delegate authorizationDidCancel:self];
+      }];
+      self.exchangeTokenRequest = req;
+      decisionHandler(WKNavigationActionPolicyCancel);
+      break;
+    }
+
+    case kDOUAuthorizationResultDidGetAccessToken: {
       if (self.credential.accessToken) {
         [self getUserInfoAfterAuthorization];
       } else {
-        NSError *err = [NSError     errorWithDomain:@"DOUOAuth2AuthorizationService"
-                                               code:1
-                                           userInfo:@{ @"error": @"access token is nil" }];
+        NSError *err = [NSError errorWithDomain:@"DOUOAuth2AuthorizationService"
+                                           code:1
+                                       userInfo:@{ @"error": @"access token is nil" }];
         [self.delegate authorization:self didFailWithError:err];
       }
-    } didFailBlock:^(id<DOUVenderOAuth2APIRequest> request, NSError *error) {
-      [self.delegate authorization:self didFailWithError:error];
-    } didCancelBlock:^(id<DOUVenderOAuth2APIRequest> request) {
-      [self.delegate authorizationDidCancel:self];
-    }];
-    self.exchangeTokenRequest = req;
-    return NO;
-  } else if (result == kDOUAuthorizationResultDidGetAccessToken) {
-    if (self.credential.accessToken) {
-      [self getUserInfoAfterAuthorization];
-    } else {
-      NSError *err = [NSError errorWithDomain:@"DOUOAuth2AuthorizationService"
-                                         code:1
-                                     userInfo:@{ @"error": @"access token is nil" }];
-      [self.delegate authorization:self didFailWithError:err];
+      decisionHandler(WKNavigationActionPolicyCancel);
+      break;
     }
-    return NO;
-  } else if (result == kDOUAuthorizationResultDidFail) {
-    DOUSNSSharingWarnLog(@"Authorization failed: request(%@), error(%@)", request, errStr);
-    NSError *err = [NSError errorWithDomain:@"DOUOAuth2AuthorizationService" code:1 userInfo:@{ @"error": errStr }];
-    [self.delegate authorization:self didFailWithError:err];
-    return NO;
-  } else {
-    DOUSNSSharingWarnLog(@"Should not be here with request: %@", request);
-    return NO;
+
+    case kDOUAuthorizationResultDidFail: {
+      DOUSNSSharingWarnLog(@"Authorization failed: request(%@), error(%@)", navigationAction.request, errStr);
+      NSError *err = [NSError errorWithDomain:@"DOUOAuth2AuthorizationService" code:1 userInfo:@{ @"error": errStr }];
+      [self.delegate authorization:self didFailWithError:err];
+      decisionHandler(WKNavigationActionPolicyCancel);
+      break;
+    }
   }
 }
 
-- (void)webViewDidFinishLoad:(UIWebView *)webView
+- (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation
 {
   if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
     UIScrollView *scrollView = [webView scrollView];
@@ -214,11 +227,18 @@
   self.loadingActivity = nil;
 }
 
-- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
+- (void)webView:(WKWebView *)webView didFailNavigation:(WKNavigation *)navigation withError:(NSError *)error
 {
   [self.loadingActivity stopAnimating];
   [self.loadingActivity removeFromSuperview];
   self.loadingActivity = nil;
+}
+
+#pragma mark - UIScrollViewDelegate
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+  scrollView.decelerationRate = UIScrollViewDecelerationRateNormal;
 }
 
 #pragma mark - util

@@ -7,7 +7,7 @@
 #import "DOUVenderOAuth2ImplFactory.h"
 
 @interface DOUOAuth2AuthorizationManager ()
-@property (nonatomic, strong, readwrite) DOUOAuth2AuthorizationService *activeAuthorizationService;
+@property (nonatomic, strong) DOUOAuth2AuthorizationService *activeAuthorizationService;
 @property (nonatomic, copy) DOUOAuth2AuthorizeDidSucceedBlock didSucceedBlock;
 @property (nonatomic, copy) DOUOAuth2AuthorizeDidFailBlock didFailBlock;
 @property (nonatomic, copy) DOUOAuth2AuthorizeDidCancelBlock didCancelBlock;
@@ -24,13 +24,10 @@
   
   self = [super init];
   if (self) {
-    DOUOAuth2Credential *credential = [[DOUOAuth2Credential alloc] initWithAPIKey:apiKey
-                                                                             secret:secret
-                                                                         venderType:type];
+    DOUOAuth2Credential *credential = [[DOUOAuth2Credential alloc] initWithAPIKey:apiKey secret:secret venderType:type];
     id serviceHandler = [DOUVenderOAuth2ImplFactory authorizationServiceByVenderCredential:credential];
-    self.activeAuthorizationService = [[DOUOAuth2AuthorizationService alloc] initWithCredential:credential
-                                                                                  venderService:serviceHandler];
-    self.activeAuthorizationService.delegate = self;
+    _activeAuthorizationService = [[DOUOAuth2AuthorizationService alloc] initWithCredential:credential venderService:serviceHandler];
+    _activeAuthorizationService.delegate = self;
   }
   return self;
 }
@@ -49,21 +46,18 @@
   self.didCancelBlock = didCancelBlock;
 }
 
-- (UIView *)requestWithRedirectUri:(NSString *)uri
-                      responseType:(DOUOAuthAuthorizationResponseType)type
-                             scope:(NSString *)scope
-                           display:(DOUOAuthAuthorizationDisplayType)display
+- (void)requestWithRedirectUri:(NSString *)uri
+                  responseType:(DOUOAuthAuthorizationResponseType)type
+                         scope:(NSString *)scope
+                       display:(DOUOAuthAuthorizationDisplayType)display
+                     inWebView:(WKWebView *)webView
 {
-  return [self.activeAuthorizationService
-          requestWithRedirectUri:uri
-          responseType:type
-          scope:scope
-          display:display];
+  [self.activeAuthorizationService requestWithRedirectUri:uri responseType:type scope:scope display:display inWebView:webView];
 }
 
-- (UIView *)requestWithRedirectUri:(NSString *)uri scope:(NSString *)scope
+- (void)requestWithRedirectUri:(NSString *)uri scope:(NSString *)scope inWebView:(WKWebView *)webView
 {
-  return [self.activeAuthorizationService requestWithRedirectUri:uri scope:scope];
+  [self.activeAuthorizationService requestWithRedirectUri:uri scope:scope inWebView:webView];
 }
 
 - (void)cancelAndClearBlocks
@@ -82,6 +76,7 @@
 }
 
 #pragma mark - DOUOAuth2AuthorizationDelegate
+
 - (void)authorizationDidFinish:(DOUOAuth2AuthorizationService *)authorization
 {
   if (self.didSucceedBlock) {

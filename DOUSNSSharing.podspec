@@ -1,11 +1,11 @@
 Pod::Spec.new do |s|
 
-  s.name               = 'DOUSNSSharing'
+  s.name               = 'DOUSNSSharingDoubanInternal'
   s.version            = '2.3.8'
   s.summary            = 'SNS OAuth 2 Binding and Sharing'
   s.homepage           = 'https://github.com/douban/DOUSNSSharing'
   s.author             = { 'Douban iOS Developers' => 'ios-dev@douban.com' }
-  s.platform           = :ios, '8.0'
+  s.platform           = :ios, '9.0'
   s.source             = {
       :git => 'https://github.com/douban/DOUSNSSharing.git',
       :tag => s.version.to_s
@@ -17,5 +17,6 @@ Pod::Spec.new do |s|
       :type => 'Douban Open Source License',
       :file => 'LICENSE'
   }
+  s.module_name = 'DOUSNSSharing'
 
 end

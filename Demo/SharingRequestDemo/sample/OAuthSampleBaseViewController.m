@@ -5,6 +5,8 @@
 //  Copyright (c) 2013 Douban Inc. All rights reserved.
 //
 
+#import <WebKit/WebKit.h>
+
 #import "OAuthSampleBaseViewController.h"
 #import "AppDelegate.h"
 
@@ -14,15 +16,7 @@
 @end
 
 @implementation OAuthSampleBaseViewController {
-  UIView *_authView;
-}
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-  self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-  if (self) {
-  }
-  return self;
+  WKWebView *_authView;
 }
 
 - (void)dealloc
@@ -55,23 +49,22 @@
 
 - (void)authorizeWithOAuth2
 {
-  __unsafe_unretained OAuthSampleBaseViewController *_selfWeakRef = self;
+  __weak typeof(self) weakSelf = self;
   
   [self.authorizationManager setBlocksForDidSucceedBlock:^(DOUOAuth2Credential *credential) {
-    _selfWeakRef.didSucceedBlock(credential);
-    [_selfWeakRef.navigationController popViewControllerAnimated:YES];
+    weakSelf.didSucceedBlock(credential);
+    [weakSelf.navigationController popViewControllerAnimated:YES];
   } didFailBlock:^(NSError *error) {
     NSLog(@"error : %@", error);
-    _selfWeakRef.didFailBlock();
-    [_selfWeakRef showAlertViewWithText:@"error"];
+    weakSelf.didFailBlock();
+    [weakSelf showAlertViewWithText:@"error"];
   } didCancelBlock:^(DOUOAuth2Credential *credential) {
-    [_selfWeakRef showAlertViewWithText:@"cancelled"];
+    [weakSelf showAlertViewWithText:@"cancelled"];
   }];
-  UIView *oauthView = [self.authorizationManager requestWithRedirectUri:[self oauthRedirectURL]
-                                                                  scope:nil];
-  [self.view addSubview:oauthView];
-  oauthView.frame = self.view.bounds;
-  _authView = oauthView;
+
+  _authView = [[WKWebView alloc] initWithFrame:self.view.bounds];
+  [self.view addSubview:_authView];
+  [self.authorizationManager requestWithRedirectUri:[self oauthRedirectURL] scope:nil inWebView:_authView];
 }
 
 - (void)back:(id)sender
@@ -86,8 +79,8 @@
 
 - (void)showAlertViewWithText:(NSString *)text
 {
-  UIAlertView *alert = [[UIAlertView alloc] initWithTitle:text message:text delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:nil, nil];
-  [alert show];
+  UIAlertController *alert = [UIAlertController alertControllerWithTitle:text message:text preferredStyle:UIAlertControllerStyleAlert];
+  [self presentViewController:alert animated:YES completion:nil];
 }
 
 - (DOUOAuth2VenderType)venderType
