@@ -269,7 +269,7 @@ typedef enum {
     } didSendOneBlock:^(DOUVenderAPIResponse *resp) {
       [self showAlertViewWithText:@"succeed to send one"];
     } didFailOneBlock:^(NSError *error, DOUOAuth2VenderType venderType) {
-      [self showAlertViewWithText:[NSString stringWithFormat:@"error %@, vender type : %d", error, venderType]];
+      [self showAlertViewWithText:[NSString stringWithFormat:@"error %@, vender type: %@", error, @(venderType)]];
     }];
     
     
@@ -314,8 +314,8 @@ typedef enum {
 
 - (void)showAlertViewWithText:(NSString *)text
 {
-  UIAlertView *alert = [[UIAlertView alloc] initWithTitle:text message:text delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-  [alert show];
+  UIAlertController *alert = [UIAlertController alertControllerWithTitle:text message:text preferredStyle:UIAlertControllerStyleAlert];
+  [self presentViewController:alert animated:YES completion:nil];
 }
 
 @end

@@ -9,12 +9,12 @@
 #import "DoubanSNSSharing.h"
 
 
-typedef void (^OAuth2DidSucceed)(DOUOAuth2Credential * credential);
-typedef void (^OAuth2DidFail)();
+typedef void (^OAuth2DidSucceed)(DOUOAuth2Credential *credential);
+typedef void (^OAuth2DidFail)(void);
 
 @interface OAuthSampleBaseViewController : UIViewController
 
-@property (nonatomic, strong) DOUOAuth2AuthorizationManager * authorizationManager;
+@property (nonatomic, strong) DOUOAuth2AuthorizationManager *authorizationManager;
 
 - (void)setOAuth2DidSucceed:(OAuth2DidSucceed)didSucceedBlock
                     didFail:(OAuth2DidFail)didFailBlock;
@@ -25,4 +25,5 @@ typedef void (^OAuth2DidFail)();
 - (NSString *)venderAPIKey;
 - (NSString *)venderAPISecrect;
 - (NSString *)oauthRedirectURL;
+
 @end
