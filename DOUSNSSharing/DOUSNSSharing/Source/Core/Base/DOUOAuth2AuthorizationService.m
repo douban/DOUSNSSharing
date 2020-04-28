@@ -53,6 +53,10 @@
 
   self.redirectURLStr = redirectURL;
   self.responseType = type;
+  self.webView = webView;
+  self.webView.navigationDelegate = self;
+  self.webView.scrollView.delegate = self;
+
   NSString *urlString = [self.serviceHandler venderOAuthWebURLBasePath];
   scope = [self.serviceHandler scopeWithdDefault:scope];
   NSMutableDictionary *params = [self requestParamsForAuthorizationCodeByAddingAPIKey:self.credential.apiKey
@@ -86,8 +90,6 @@
   | UIViewAutoresizingFlexibleTopMargin;
 
   [webView loadRequest:request];
-
-  self.webView = webView;
 }
 
 - (void)requestWithRedirectUri:(NSString *)uri
@@ -150,7 +152,7 @@
                                                                              errorStr:&errStr];
   switch (result) {
     case kDOUAuthorizationResultNone: {
-      decisionHandler(WKNavigationActionPolicyCancel);
+      decisionHandler(WKNavigationActionPolicyAllow);
       break;
     }
 
